@@ -30,7 +30,7 @@ class CSDN_Spider(scrapy.Spider):
             "size": "20",
             "businessType": "lately",
             "noMore": "false",
-            "username": "MarkAdc"
+            "username": self.author_name
         }
         url = part_url + "?" + urlencode(params)
         yield scrapy.Request(url, self.parse_page, cb_kwargs={"part_url": part_url, "params": params})

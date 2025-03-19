@@ -28,7 +28,8 @@ def main():
 
     for n in range(t):
         job()
-        print("第 {} 轮结束...".format(n + 1))
+        if t > 1:
+            print("第 {} 轮结束...".format(n + 1))
         if n != t - 1:
             print("{} 秒后继续启动爬虫".format(i))
             time.sleep(i)
