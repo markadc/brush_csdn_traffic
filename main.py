@@ -14,18 +14,24 @@ t, k, i, n, p = args["times"], args["keep"], args["interval"], args["name"], arg
 
 def job():
     subprocess.run("scrapy crawl csdn -a name={} -a page={}".format(n, p).split())
-    if t > 1 or k:
-        print("{} 秒后继续启动爬虫".format(i))
-        time.sleep(i)
 
 
 def main():
+    global i
+
     if k is True:
+        n = 0
         while True:
             job()
+            print("第 {} 轮结束...{} 秒后继续启动爬虫".format(n + 1, i))
+            time.sleep(i)
 
-    for i in range(args["times"]):
+    for n in range(t):
         job()
+        print("第 {} 轮结束...".format(n + 1))
+        if n != t - 1:
+            print("{} 秒后继续启动爬虫".format(i))
+            time.sleep(i)
 
     print(args)
 
