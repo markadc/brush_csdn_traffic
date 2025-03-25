@@ -23,7 +23,8 @@ def main():
         n = 0
         while True:
             job()
-            print("第 {} 轮结束...{} 秒后继续启动爬虫".format(n + 1, i))
+            n += 1
+            print("第 {} 轮结束...{} 秒后继续启动爬虫".format(n, i))
             time.sleep(i)
 
     for n in range(t):
